@@ -10,11 +10,18 @@
 
 # Import necessary packages
 import h5py
+import os
 import numpy  as np
 import pandas as pd
 import matplotlib.pyplot as plt
+
+# Gather file directory that points to data
+data_dir  = r'C:/Users/moyoa/Google Drive/CompSci/PhD Dissertation/Data Analysis/Picarro/Cumberland/Vandy_NOAA_OakRidge/NEON'
+data_fldr = r'/ORNL_data/ORNL-unzipped-data'
+data_file = r'NEON.D07.ORNL.DP4.00200.001.nsae.2019-10-24.expanded.h5'
+
 # Path for HD5F file
-raw_file = r'C:/Users/moyoa/Google Drive/CompSci/PhD Dissertation/Data Analysis/Picarro/Cumberland/Vandy_NOAA_OakRidge/NEON/ORNL_data/ORNL-unzipped-data/NEON.D07.ORNL.DP4.00200.001.nsae.2019-10-24.expanded.h5'
+raw_file = os.path.join(data_dir + data_fldr + data_file)
 # Open up HD5F file
 h5_file = h5py.File(raw_file, 'r')
 
