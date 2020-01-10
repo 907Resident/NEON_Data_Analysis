@@ -157,7 +157,16 @@ dp01p_Lvl05_tempAir = dp01p['tempSoil']['000_050_30m']['temp'][:len(dp01p_Lvl05_
 
 #%% Data Product 04 -- dp04
 
-# EC Tower CO2 Fluxes
+### Level 4
+dp04p           = data['dp01']['data']
 
+###### Gather the EC Tower CO2 Fluxes -- Co2Flx
+######+++ Used the Net Surface-Atmosphere Exchange values (nsae)
+#########+++ If 'nsae' is empty, then add storage flux (stor) and turbulent flux (turb)
+######+++ See NEON documentation (https://data.neonscience.org/data-product-view?dpCode=DP4.00200.001) and 
+######+++ Nicolini et al. (2018) (http://dx.doi.org/10.1016/j.agrformet.2017.09.025)
+######## Level 01 | 30-min resolution
+dp01p_EC_lvl01_co2Flx = dp01p['co2Stor']['000_010_30m']['rtioMoleDryCo2']
+dp01p_IRGA_lvl01_co2Stor = dp01p['co2Stor']['000_010_30m']['rtioMoleDryCo2'][:len(dp01p_IRGA_lvl01_co2Stor)]
 
 # %%
