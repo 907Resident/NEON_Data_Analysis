@@ -1,0 +1,54 @@
+Net Surface Atmospheric Exchange (NSAE) HDF5 File Structure Description 
+The NSAE file you downloaded from NEON data portal is in the HDF5 format. This document describes the HDF5 file structure. This file will provide the HDF5 hierarchical layout of file and a description of each level HDF5 group level. The full descriptions of objects can be found in the objDesc data table provided within the HDF5 file. The 'Exploring NEON Eddy-Covariance Data Products in HDF5 file format' document provides a greater level of detail with pictorial examples, which can be retrieved from the NEON reference library as part of the additional documentation for the eddy-covariance download package.
+
+The NEON HDF5 file structure was developed following the NEON data product (DP) naming convention provided in NEON.DOC.002651, where portions of the naming convention as described below were selected to develop the hierarchical structure of the HDF5 file:
+
+NEON.DOM.SITE.DPL.PRNUM.REV.TERMS.HOR.VER.TMI
+
+Where (* indicates used in HDF5 structure): 
+NEON = NEON. NEON denotes the organizational origin of the data product and identifies the product as operational; data collected as part of a special data collection exercise are designated by a separate, unique alphanumeric code created by the PI.
+DOM = DOMAIN, e.g. D10. DOM is a three-character alphanumeric code, referring to the domain of data acquisition (D01 - D20).
+*SITE = SITE, e.g. STER. SITE is four-character alphanumeric code, referring to the site of data acquisition; all sites are designated by a standardized four-character alphabetic code.
+*DPL = DATA PRODUCT LEVEL, e.g. DP1. DPL is a three-character alphanumeric code, referring to data product processing level. In the HDF5 files, this is represented as dp0L, e.g., dp01.
+*PRNUM = PRODUCT NUMBER. PRNUM is a five-character numeric code, referring to the data product number (see the Data Product Catalog at http://data.neonscience.org/data-product-catalog). We use abbreviated data product names instead of the PRNUM to increase readability of the file. 
+    Example = co2Turb for turbulent CO2 concentration measured by LI-7200 IRGA (00034 CO2 concentration - turbulent); co2Stor for storage (or profile) CO2 concentration measured by LI-840 IRGA (00099 CO2 concentration - storage).
+*REV = REVISION, e.g. 001. REV is a three-digit designation, referring to the revision number of the data product. The REV value is incremented by 1 each time a major change is made in instrumentation, data collection protocol, or data processing such that data from the preceding revision is not directly comparable to the new.
+*TERMS = TERMS, from a controlled list of NEON terms. Examples: rtioMoleDryCo2 = dry molar fraction of CO2 in the air; dlta13CCo2 = ?13C of CO2 in the air.
+*HOR = HORIZONTAL INDEX.  HOR is the Spatial Index #1 and refers to measurement locations within one horizontal plane. For example, if five surface measurements were taken, one at each of the five soil array plots, the number in the HOR field would range from 001-005.
+    Examples: Tower=000, Hut =700, soil plot 1 to soil plot 5 = 001 to 005.
+*VER = VERTICAL INDEX. VER is the Spatial Index #2 and refers to measurement locations within one vertical plane. For example, if eight temperature measurements are collected, one at each tower vertical level, the number in the VER field would range from 010-080.
+    Examples: Ground level = 000, first tower level above the ground surface = 010, second tower level above the ground surface = 020. The soil sensor depth level closest to the ground surface = 501, second soil sensor depth level closest to the ground surface = 502. 
+*TMI = TEMPORAL INDEX. TMI is the Temporal Index; it is a three-digit designation and refers to the temporal representation, averaging period, or coverage of the data product (e.g., minute, hour, month, year, sub-hourly, day, lunar month, single instance, seasonal, annual, multi-annual). In a typical data product number, 000 = native resolution, 001 = native resolution or 1 minute, 002 = 2 minute, 005 = 5 minute, 015 = 15 minute, 030 = 30 minute, 060 = 60 minutes or 1 hour. In the HDF5 file, we represent TMI as 01m, 05m or 30m, etc. to increase the readability of the file. Examples: 01m = 1 minute, 30m = 30 minute.
+
+One additional level that is not included in the NEON (DP) naming convention is the TYPE field, which describes the type of data provided such as data statistics (data), quality information (qfqm), or uncertainty quantification (ucrt).
+
+The hierarchical structure of the NEON HDF5 in its generic form is as following:
+ /SITE: measurement site four-letter site code
+/SITE/DPL: Data product level, i.e., dp01 for Level 1 data products
+/SITE/DPL/TYPE: The type of information provided, i.e. data (data), quality flags or quality metrics (qfqm), or uncertainty (ucrt) estimates
+/SITE/DPL/TYPE/PRNUM : Typically, this is a 5-digit data product identification code. We use abbreviated data product names instead of the PRNUM to increase readability of the file.  See examples above for PRNUM. 
+/SITE/DPL/TYPE/PRNUM/HOR_VER_TMI: horizontal position, vertical position and time resolution index of data products during sampling periods. During field calibration/validation periods, the format will be calibration/validation standard_TMI, i.e., co2High_02m = 2 min average data during field calibration/validation using a known High CO2 concentration standard.
+/SITE/DPL/TYPE/PRNUM/HOR_VER_TMI/TERMS: term name of the data provided
+
+An example for Eddy-covariance turbulent exchange level 1 data products (example for CO2 concentration at the Smithsonian Ecological Research Center (SERC) site):
+ /SERC: measurement site four-letter site code
+/SERC/dp01: Level 1 data products
+/SERC/dp01/data: Data 
+/SERC/dp01/data/co2Turb: Data for data product NEON.DP1.00034, CO concentration - turbulent
+/SERC/dp01/data/co2Turb/000_060_30m: Data collected at the tower (HOR = 000), top level (VER = 060) and 30 minute time resolution (TMI = 30m)
+/SERC/dp01/data/co2Turb/000_060_30m/densMoleCo2: molar density of carbon dioxide
+                  ::::
+/SERC/dp01/data/co2Turb/000_060_01m, with sub-folders analogous to /SERC/dp01/data/co2Turb/000_060_30m
+/SERC/dp01/data/h2oTurb (NEON.DP1.00035), with sub-folders analogous to /SERC/dp01/data/co2Turb
+/SERC/dp01/data/soni (NEON.DP1.00007), with sub-folders analogous to /SERC/dp01/data/co2Turb
+/SERC/dp01/data/soniAmrs (NEON.DP1.00010), with sub-folders analogous to /SERC/dp01/data/co2Turb
+/SERC/dp01/qfqm: Quality information, with sub-folders analogous to /SERC/dp01/data
+                  ::::
+/SERC/dp01/ucrt: Uncertainty information, with sub-folders analogous to /SERC/dp01/data
+                  ::::
+/SERC/dp02: Level 2 data products
+/SERC/dp03: Level 3 data products
+/SERC/dp04: Level 4 data products
+/SERC/dp0p: Level 0 prime data products
+
+Metadata are packaged with the data as attributes either at the site group level, a data product group level, or directly to the data tables for the L1-L4 processed products.
