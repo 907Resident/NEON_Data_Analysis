@@ -45,10 +45,10 @@ data.keys()
 dp0p            = data['dp0p']['data']
 dp0p.keys()
 ###### Gather the CO2 CRDS data
-dp0p_crdCo2 = dp0p['crdCo2']
+#dp0p_crdCo2 = dp0p['crdCo2']
 ####### ^^^ No data for this entry
 
-#%% LEVEL 1 -- dp01
+#%% Data Product 01  -- dp01
 
 ### Level 1
 dp01p           = data['dp01']['data']
@@ -73,31 +73,6 @@ dp01p_IRGA_lvl05_co2Stor = dp01p['co2Stor']['000_050_30m']['rtioMoleDryCo2'][:le
 dp01p_IRGA_lvl06_co2Stor = dp01p['co2Stor']['000_060_30m']['rtioMoleDryCo2']
 dp01p_IRGA_lvl06_co2Stor = dp01p['co2Stor']['000_060_30m']['rtioMoleDryCo2'][:len(dp01p_IRGA_lvl06_co2Stor)]
 
-"""
-This block will need to be edited but since it does not contain any data, I have commented it out
-(09-Jan-2020)
-###### Gather the Soil Temperature 
-######## Level 01 | 30-min resolution
-#dp01p_p01l01_tempSoil = dp01p['tempSoil']['001_501_30m']
-dp01p_p01l01_tempSoil = dp01p['tempSoil']['001_501_30m'][:len(dp01p_p01l01_tempSoil)]
-######## Level 02 | 30-min resolution
-dp01p_p01l02_tempSoil = dp01p['tempSoil']['001_502_30m']['rtioMoleDryCo2']
-dp01p_p01l02_tempSoil = dp01p['tempSoil']['001_502_30m']['rtioMoleDryCo2'][:len(dp01p_lvl02_tempSoil)]
-######## Level 03 | 30-min resolution
-dp01p_p01l03_tempSoil = dp01p['tempSoil']['000_030_30m']['rtioMoleDryCo2']
-dp01p_p01l03_tempSoil = dp01p['tempSoil']['000_030_30m']['rtioMoleDryCo2'][:len(dp01p_lvl03_tempSoil)]
-######## Level 04 | 30-min resolution
-dp01p_p01l04_tempSoil = dp01p['tempSoil']['000_040_30m']['rtioMoleDryCo2']
-dp01p_p01l04_tempSoil = dp01p['tempSoil']['000_040_30m']['rtioMoleDryCo2'][:len(dp01p_lvl04_tempSoil)]
-######## Level 05 | 30-min resolution
-dp01p_p01l05_tempSoil = dp01p['tempSoil']['000_050_30m']['rtioMoleDryCo2']
-dp01p_p01l05_tempSoil = dp01p['tempSoil']['000_050_30m']['rtioMoleDryCo2'][:len(dp01p_lvl05_tempSoil)]
-######## Level 06 | 30-min resolution
-dp01p_p01l06_tempSoil = dp01p['tempSoil']['000_060_30m']['rtioMoleDryCo2']
-dp01p_p01l06_tempSoil = dp01p['tempSoil']['000_060_30m']['rtioMoleDryCo2'][:len(dp01p_lvl06_tempSoil)]
-
-"""
-
 ###### Gather CRDS [CO2] Measurements
 ######## Level 01 | 30-min resolution
 dp01p_isoCo2_lvl01_dryCo2 = dp01p['isoCo2']['000_010_30m']['rtioMoleDryCo2']
@@ -118,6 +93,69 @@ dp01p_isoCo2_lvl05_dryCo2 = dp01p['isoCo2']['000_050_30m']['rtioMoleDryCo2'][:le
 dp01p_isoCo2_lvl06_dryCo2 = dp01p['isoCo2']['000_060_30m']['rtioMoleDryCo2']
 dp01p_isoCo2_lvl06_dryCo2 = dp01p['isoCo2']['000_060_30m']['rtioMoleDryCo2'][:len(dp01p_isoCo2_lvl06_dryCo2)]
 
+###### Gather CRDS d13CO2 - iCO2 -  Measurements
+######## Level 01 | 30-min resolution
+dp01p_isoCo2_lvl01_iCo2 = dp01p['isoCo2']['000_010_30m']['dlta13CCo2']
+dp01p_isoCo2_lvl01_iCo2 = dp01p['isoCo2']['000_010_30m']['dlta13CCo2'][:len(dp01p_isoCo2_lvl01_iCo2)]
+######## Level 02 | 30-min resolution
+dp01p_isoCo2_lvl02_iCo2 = dp01p['isoCo2']['000_020_30m']['dlta13CCo2']
+dp01p_isoCo2_lvl02_iCo2 = dp01p['isoCo2']['000_020_30m']['dlta13CCo2'][:len(dp01p_isoCo2_lvl02_iCo2)]
+######## Level 03 | 30-min resolution
+dp01p_isoCo2_lvl03_iCo2 = dp01p['isoCo2']['000_030_30m']['dlta13CCo2']
+dp01p_isoCo2_lvl03_iCo2 = dp01p['isoCo2']['000_030_30m']['dlta13CCo2'][:len(dp01p_isoCo2_lvl02_iCo2)]
+######## Level 04 | 30-min resolution
+dp01p_isoCo2_lvl04_iCo2 = dp01p['isoCo2']['000_040_30m']['dlta13CCo2']
+dp01p_isoCo2_lvl04_iCo2 = dp01p['isoCo2']['000_040_30m']['dlta13CCo2'][:len(dp01p_isoCo2_lvl04_iCo2)]
+######## Level 05 | 30-min resolution
+dp01p_isoCo2_lvl05_iCo2 = dp01p['isoCo2']['000_050_30m']['dlta13CCo2']
+dp01p_isoCo2_lvl05_iCo2 = dp01p['isoCo2']['000_050_30m']['dlta13CCo2'][:len(dp01p_isoCo2_lvl05_iCo2)]
+######## Level 06 | 30-min resolution
+dp01p_isoCo2_lvl06_iCo2 = dp01p['isoCo2']['000_060_30m']['dlta13CCo2']
+dp01p_isoCo2_lvl06_iCo2 = dp01p['isoCo2']['000_060_30m']['dlta13CCo2'][:len(dp01p_isoCo2_lvl06_iCo2)]
+
+"""
+This block will need to be edited but since it does not contain any data, I have commented it out
+(09-Jan-2020)
+###### Gather the Soil Temperature by plot and depth
+######## Level 01 | 30-min resolution
+dp01p_p01l01_tempSoil = dp01p['tempSoil']['001_501_30m']
+dp01p_p01l01_tempSoil = dp01p['tempSoil']['001_501_30m'][:len(dp01p_p01l01_tempSoil)]
+######## Level 02 | 30-min resolution
+dp01p_p01l02_tempSoil = dp01p['tempSoil']['001_502_30m']['rtioMoleDryCo2']
+dp01p_p01l02_tempSoil = dp01p['tempSoil']['001_502_30m']['rtioMoleDryCo2'][:len(dp01p_lvl02_tempSoil)]
+######## Level 03 | 30-min resolution
+dp01p_p01l03_tempSoil = dp01p['tempSoil']['000_030_30m']['rtioMoleDryCo2']
+dp01p_p01l03_tempSoil = dp01p['tempSoil']['000_030_30m']['rtioMoleDryCo2'][:len(dp01p_lvl03_tempSoil)]
+######## Level 04 | 30-min resolution
+dp01p_p01l04_tempSoil = dp01p['tempSoil']['000_040_30m']['rtioMoleDryCo2']
+dp01p_p01l04_tempSoil = dp01p['tempSoil']['000_040_30m']['rtioMoleDryCo2'][:len(dp01p_lvl04_tempSoil)]
+######## Level 05 | 30-min resolution
+dp01p_p01l05_tempSoil = dp01p['tempSoil']['000_050_30m']['rtioMoleDryCo2']
+dp01p_p01l05_tempSoil = dp01p['tempSoil']['000_050_30m']['rtioMoleDryCo2'][:len(dp01p_lvl05_tempSoil)]
+######## Level 06 | 30-min resolution
+dp01p_p01l06_tempSoil = dp01p['tempSoil']['000_060_30m']['rtioMoleDryCo2']
+dp01p_p01l06_tempSoil = dp01p['tempSoil']['000_060_30m']['rtioMoleDryCo2'][:len(dp01p_lvl06_tempSoil)]
+
+"""
+
+###### Gather the Air Temperature  by level
+######## Level 01 | 30-min resolution
+dp01p_Lvl01_tempAir = dp01p['tempSoil']['000_010_30m']['temp']
+dp01p_Lvl01_tempAir = dp01p['tempSoil']['000_010_30m']['temp'][:len(dp01p_Lvl01_tempAir)]
+######## Level 02 | 30-min resolution
+dp01p_Lvl02_tempAir = dp01p['tempSoil']['000_020_30m']['temp']
+dp01p_Lvl02_tempAir = dp01p['tempSoil']['000_020_30m']['temp'][:len(dp01p_Lvl02_tempAir)]
+######## Level 03 | 30-min resolution
+dp01p_Lvl03_tempAir = dp01p['tempSoil']['000_030_30m']['temp']
+dp01p_Lvl03_tempAir = dp01p['tempSoil']['000_030_30m']['temp'][:len(dp01p_Lvl03_tempAir)]
+######## Level 04 | 30-min resolution
+dp01p_Lvl04_tempAir = dp01p['tempSoil']['000_040_30m']['temp']
+dp01p_Lvl04_tempAir = dp01p['tempSoil']['000_040_30m']['temp'][:len(dp01p_Lvl04_tempAir)]
+######## Level 05 | 30-min resolution
+dp01p_Lvl05_tempAir = dp01p['tempSoil']['000_050_30m']['temp']
+dp01p_Lvl05_tempAir = dp01p['tempSoil']['000_050_30m']['temp'][:len(dp01p_Lvl05_tempAir)]
+
+#%% Data Product 04 -- dp04
 
 # EC Tower CO2 Fluxes
 
