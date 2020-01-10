@@ -140,33 +140,150 @@ dp01p_p01l06_tempSoil = dp01p['tempSoil']['000_060_30m']['rtioMoleDryCo2'][:len(
 
 ###### Gather the Air Temperature  by level
 ######## Level 01 | 30-min resolution
-dp01p_Lvl01_tempAir = dp01p['tempSoil']['000_010_30m']['temp']
-dp01p_Lvl01_tempAir = dp01p['tempSoil']['000_010_30m']['temp'][:len(dp01p_Lvl01_tempAir)]
+dp01p_Lvl01_tempAir = dp01p['tempAirLvl']['000_010_30m']['temp']
+dp01p_Lvl01_tempAir = dp01p['tempAirLvl']['000_010_30m']['temp'][:len(dp01p_Lvl01_tempAir)]
 ######## Level 02 | 30-min resolution
-dp01p_Lvl02_tempAir = dp01p['tempSoil']['000_020_30m']['temp']
-dp01p_Lvl02_tempAir = dp01p['tempSoil']['000_020_30m']['temp'][:len(dp01p_Lvl02_tempAir)]
+dp01p_Lvl02_tempAir = dp01p['tempAirLvl']['000_020_30m']['temp']
+dp01p_Lvl02_tempAir = dp01p['tempAirLvl']['000_020_30m']['temp'][:len(dp01p_Lvl02_tempAir)]
 ######## Level 03 | 30-min resolution
-dp01p_Lvl03_tempAir = dp01p['tempSoil']['000_030_30m']['temp']
-dp01p_Lvl03_tempAir = dp01p['tempSoil']['000_030_30m']['temp'][:len(dp01p_Lvl03_tempAir)]
+dp01p_Lvl03_tempAir = dp01p['tempAirLvl']['000_030_30m']['temp']
+dp01p_Lvl03_tempAir = dp01p['tempAirLvl']['000_030_30m']['temp'][:len(dp01p_Lvl03_tempAir)]
 ######## Level 04 | 30-min resolution
-dp01p_Lvl04_tempAir = dp01p['tempSoil']['000_040_30m']['temp']
-dp01p_Lvl04_tempAir = dp01p['tempSoil']['000_040_30m']['temp'][:len(dp01p_Lvl04_tempAir)]
+dp01p_Lvl04_tempAir = dp01p['tempAirLvl']['000_040_30m']['temp']
+dp01p_Lvl04_tempAir = dp01p['tempAirLvl']['000_040_30m']['temp'][:len(dp01p_Lvl04_tempAir)]
 ######## Level 05 | 30-min resolution
-dp01p_Lvl05_tempAir = dp01p['tempSoil']['000_050_30m']['temp']
-dp01p_Lvl05_tempAir = dp01p['tempSoil']['000_050_30m']['temp'][:len(dp01p_Lvl05_tempAir)]
+dp01p_Lvl05_tempAir = dp01p['tempAirLvl']['000_050_30m']['temp']
+dp01p_Lvl05_tempAir = dp01p['tempAirLvl']['000_050_30m']['temp'][:len(dp01p_Lvl05_tempAir)]
 
 #%% Data Product 04 -- dp04
 
 ### Level 4
-dp04p           = data['dp01']['data']
+dp04p           = data['dp04']['data']
 
 ###### Gather the EC Tower CO2 Fluxes -- Co2Flx
 ######+++ Used the Net Surface-Atmosphere Exchange values (nsae)
 #########+++ If 'nsae' is empty, then add storage flux (stor) and turbulent flux (turb)
 ######+++ See NEON documentation (https://data.neonscience.org/data-product-view?dpCode=DP4.00200.001) and 
 ######+++ Nicolini et al. (2018) (http://dx.doi.org/10.1016/j.agrformet.2017.09.025)
-######## Level 01 | 30-min resolution
-dp01p_EC_lvl01_co2Flx = dp01p['co2Stor']['000_010_30m']['rtioMoleDryCo2']
-dp01p_IRGA_lvl01_co2Stor = dp01p['co2Stor']['000_010_30m']['rtioMoleDryCo2'][:len(dp01p_IRGA_lvl01_co2Stor)]
+######## Storage FLux | 30-min resolution
+dp04p_EC_co2FlxStor = dp04p['fluxCo2']['stor']
+dp04p_EC_co2FlxStor = dp04p['fluxCo2']['stor'][:len(dp04p_EC_co2FlxStor)]
+######## Turbulent FLux | 30-min resolution
+dp04p_EC_co2FlxTurb = dp04p['fluxCo2']['turb']
+dp04p_EC_co2FlxTurb = dp04p['fluxCo2']['turb'][:len(dp04p_EC_co2FlxTurb)]
+######## NSAE Flux | 30-min resolution
+dp04p_EC_co2FlxNSAE = np.add(dp04p_EC_co2FlxStor['flux'], dp04p_EC_co2FlxTurb['fluxRaw'])
+
+#%% Combine Pertinent Data into DataFrame
+
+pert_data_dict = {
+                  'timeBgn': dp01p_IRGA_lvl01_co2Stor['timeBgn'],
+                  'timeEnd': dp01p_IRGA_lvl01_co2Stor['timeEnd'],
+                  'IRGA_lvl01_Co2_mu': dp01p_IRGA_lvl01_co2Stor['mean'],
+                  'IRGA_lvl01_Co2_mx': dp01p_IRGA_lvl01_co2Stor['max'],
+                  'IRGA_lvl01_Co2_mn': dp01p_IRGA_lvl01_co2Stor['min'],
+                  'IRGA_lvl01_Co2_vr': dp01p_IRGA_lvl01_co2Stor['vari'],
+                  'IRGA_lvl01_Co2_n' : dp01p_IRGA_lvl01_co2Stor['numSamp'],
+                  'IRGA_lvl02_Co2_mu': dp01p_IRGA_lvl02_co2Stor['mean'],
+                  'IRGA_lvl02_Co2_mx': dp01p_IRGA_lvl02_co2Stor['max'],
+                  'IRGA_lvl02_Co2_mn': dp01p_IRGA_lvl02_co2Stor['min'],
+                  'IRGA_lvl02_Co2_vr': dp01p_IRGA_lvl02_co2Stor['vari'],
+                  'IRGA_lvl02_Co2_n' : dp01p_IRGA_lvl02_co2Stor['numSamp'],
+                  'IRGA_lvl03_Co2_mu': dp01p_IRGA_lvl03_co2Stor['mean'],
+                  'IRGA_lvl03_Co2_mx': dp01p_IRGA_lvl03_co2Stor['max'],
+                  'IRGA_lvl03_Co2_mn': dp01p_IRGA_lvl03_co2Stor['min'],
+                  'IRGA_lvl03_Co2_vr': dp01p_IRGA_lvl03_co2Stor['vari'],
+                  'IRGA_lvl03_Co2_n' : dp01p_IRGA_lvl03_co2Stor['numSamp'],
+                  'IRGA_lvl04_Co2_mu': dp01p_IRGA_lvl04_co2Stor['mean'],
+                  'IRGA_lvl04_Co2_mx': dp01p_IRGA_lvl04_co2Stor['max'],
+                  'IRGA_lvl04_Co2_mn': dp01p_IRGA_lvl04_co2Stor['min'],
+                  'IRGA_lvl04_Co2_vr': dp01p_IRGA_lvl04_co2Stor['vari'],
+                  'IRGA_lvl04_Co2_n' : dp01p_IRGA_lvl04_co2Stor['numSamp'],
+                  'IRGA_lvl05_Co2_mu': dp01p_IRGA_lvl05_co2Stor['mean'],
+                  'IRGA_lvl05_Co2_mx': dp01p_IRGA_lvl05_co2Stor['max'],
+                  'IRGA_lvl05_Co2_mn': dp01p_IRGA_lvl05_co2Stor['min'],
+                  'IRGA_lvl05_Co2_vr': dp01p_IRGA_lvl05_co2Stor['vari'],
+                  'IRGA_lvl05_Co2_n' : dp01p_IRGA_lvl05_co2Stor['numSamp'],
+                  'IRGA_lvl06_Co2_mu': dp01p_IRGA_lvl06_co2Stor['mean'],
+                  'IRGA_lvl06_Co2_mx': dp01p_IRGA_lvl06_co2Stor['max'],
+                  'IRGA_lvl06_Co2_mn': dp01p_IRGA_lvl06_co2Stor['min'],
+                  'IRGA_lvl06_Co2_vr': dp01p_IRGA_lvl06_co2Stor['vari'],
+                  'IRGA_lvl06_Co2_n' : dp01p_IRGA_lvl06_co2Stor['numSamp'],
+                  'isoCO2_lvl01_dryCo2_mu': dp01p_isoCo2_lvl01_dryCo2['mean'],
+                  'isoCO2_lvl01_dryCo2_mx': dp01p_isoCo2_lvl01_dryCo2['max'],
+                  'isoCO2_lvl01_dryCo2_mn': dp01p_isoCo2_lvl01_dryCo2['min'],
+                  'isoCO2_lvl01_dryCo2_vr': dp01p_isoCo2_lvl01_dryCo2['vari'],
+                  'isoCO2_lvl01_dryCo2_n' : dp01p_isoCo2_lvl01_dryCo2['numSamp'],
+                  'isoCO2_lvl02_dryCo2_mu': dp01p_isoCo2_lvl02_dryCo2['mean'],
+                  'isoCO2_lvl02_dryCo2_mx': dp01p_isoCo2_lvl02_dryCo2['max'],
+                  'isoCO2_lvl02_dryCo2_mn': dp01p_isoCo2_lvl02_dryCo2['min'],
+                  'isoCO2_lvl02_dryCo2_vr': dp01p_isoCo2_lvl02_dryCo2['vari'],
+                  'isoCO2_lvl02_dryCo2_n' : dp01p_isoCo2_lvl02_dryCo2['numSamp'],
+                  'isoCO2_lvl03_dryCo2_mu': dp01p_isoCo2_lvl03_dryCo2['mean'],
+                  'isoCO2_lvl03_dryCo2_mx': dp01p_isoCo2_lvl03_dryCo2['max'],
+                  'isoCO2_lvl03_dryCo2_mn': dp01p_isoCo2_lvl03_dryCo2['min'],
+                  'isoCO2_lvl03_dryCo2_vr': dp01p_isoCo2_lvl03_dryCo2['vari'],
+                  'isoCO2_lvl03_dryCo2_n' : dp01p_isoCo2_lvl03_dryCo2['numSamp'],
+                  'isoCO2_lvl04_dryCo2_mu': dp01p_isoCo2_lvl04_dryCo2['mean'],
+                  'isoCO2_lvl04_dryCo2_mx': dp01p_isoCo2_lvl04_dryCo2['max'],
+                  'isoCO2_lvl04_dryCo2_mn': dp01p_isoCo2_lvl04_dryCo2['min'],
+                  'isoCO2_lvl04_dryCo2_vr': dp01p_isoCo2_lvl04_dryCo2['vari'],
+                  'isoCO2_lvl04_dryCo2_n' : dp01p_isoCo2_lvl04_dryCo2['numSamp'],
+                  'isoCO2_lvl05_dryCo2_mu': dp01p_isoCo2_lvl05_dryCo2['mean'],
+                  'isoCO2_lvl05_dryCo2_mx': dp01p_isoCo2_lvl05_dryCo2['max'],
+                  'isoCO2_lvl05_dryCo2_mn': dp01p_isoCo2_lvl05_dryCo2['min'],
+                  'isoCO2_lvl05_dryCo2_vr': dp01p_isoCo2_lvl05_dryCo2['vari'],
+                  'isoCO2_lvl05_dryCo2_n' : dp01p_isoCo2_lvl05_dryCo2['numSamp'],
+                  'isoCO2_lvl06_dryCo2_mu': dp01p_isoCo2_lvl06_dryCo2['mean'],
+                  'isoCO2_lvl06_dryCo2_mx': dp01p_isoCo2_lvl06_dryCo2['max'],
+                  'isoCO2_lvl06_dryCo2_mn': dp01p_isoCo2_lvl06_dryCo2['min'],
+                  'isoCO2_lvl06_dryCo2_vr': dp01p_isoCo2_lvl06_dryCo2['vari'],
+                  'isoCO2_lvl06_dryCo2_n' : dp01p_isoCo2_lvl06_dryCo2['numSamp'],
+                  'isoCO2_lvl01_iCo2_mu': dp01p_isoCo2_lvl01_iCo2['mean'],
+                  'isoCO2_lvl01_iCo2_mx': dp01p_isoCo2_lvl01_iCo2['max'],
+                  'isoCO2_lvl01_iCo2_mn': dp01p_isoCo2_lvl01_iCo2['min'],
+                  'isoCO2_lvl01_iCo2_vr': dp01p_isoCo2_lvl01_iCo2['vari'],
+                  'isoCO2_lvl01_iCo2_n' : dp01p_isoCo2_lvl01_iCo2['numSamp'],
+                  'isoCO2_lvl02_iCo2_mu': dp01p_isoCo2_lvl02_iCo2['mean'],
+                  'isoCO2_lvl02_iCo2_mx': dp01p_isoCo2_lvl02_iCo2['max'],
+                  'isoCO2_lvl02_iCo2_mn': dp01p_isoCo2_lvl02_iCo2['min'],
+                  'isoCO2_lvl02_iCo2_vr': dp01p_isoCo2_lvl02_iCo2['vari'],
+                  'isoCO2_lvl02_iCo2_n' : dp01p_isoCo2_lvl02_iCo2['numSamp'],
+                  'isoCO2_lvl03_iCo2_mu': dp01p_isoCo2_lvl03_iCo2['mean'],
+                  'isoCO2_lvl03_iCo2_mx': dp01p_isoCo2_lvl03_iCo2['max'],
+                  'isoCO2_lvl03_iCo2_mn': dp01p_isoCo2_lvl03_iCo2['min'],
+                  'isoCO2_lvl03_iCo2_vr': dp01p_isoCo2_lvl03_iCo2['vari'],
+                  'isoCO2_lvl03_iCo2_n' : dp01p_isoCo2_lvl03_iCo2['numSamp'],
+                  'isoCO2_lvl04_iCo2_mu': dp01p_isoCo2_lvl04_iCo2['mean'],
+                  'isoCO2_lvl04_iCo2_mx': dp01p_isoCo2_lvl04_iCo2['max'],
+                  'isoCO2_lvl04_iCo2_mn': dp01p_isoCo2_lvl04_iCo2['min'],
+                  'isoCO2_lvl04_iCo2_vr': dp01p_isoCo2_lvl04_iCo2['vari'],
+                  'isoCO2_lvl04_iCo2_n' : dp01p_isoCo2_lvl04_iCo2['numSamp'],
+                  'isoCO2_lvl05_iCo2_mu': dp01p_isoCo2_lvl05_iCo2['mean'],
+                  'isoCO2_lvl05_iCo2_mx': dp01p_isoCo2_lvl05_iCo2['max'],
+                  'isoCO2_lvl05_iCo2_mn': dp01p_isoCo2_lvl05_iCo2['min'],
+                  'isoCO2_lvl05_iCo2_vr': dp01p_isoCo2_lvl05_iCo2['vari'],
+                  'isoCO2_lvl05_iCo2_n' : dp01p_isoCo2_lvl05_iCo2['numSamp'],
+                  'isoCO2_lvl06_iCo2_mu': dp01p_isoCo2_lvl06_iCo2['mean'],
+                  'isoCO2_lvl06_iCo2_mx': dp01p_isoCo2_lvl06_iCo2['max'],
+                  'isoCO2_lvl06_iCo2_mn': dp01p_isoCo2_lvl06_iCo2['min'],
+                  'isoCO2_lvl06_iCo2_vr': dp01p_isoCo2_lvl06_iCo2['vari'],
+                  'isoCO2_lvl06_iCo2_n' : dp01p_isoCo2_lvl06_iCo2['numSamp'],
+                  'Lvl01_tempAir_mu' : dp01p_Lvl01_tempAir['mean'],
+                  'Lvl01_tempAir_vr' : dp01p_Lvl01_tempAir['vari'],
+                  'Lvl02_tempAir_mu' : dp01p_Lvl02_tempAir['mean'],
+                  'Lvl02_tempAir_vr' : dp01p_Lvl02_tempAir['vari'],
+                  'Lvl03_tempAir_mu' : dp01p_Lvl03_tempAir['mean'],
+                  'Lvl03_tempAir_vr' : dp01p_Lvl03_tempAir['vari'],
+                  'Lvl04_tempAir_mu' : dp01p_Lvl04_tempAir['mean'],
+                  'Lvl04_tempAir_vr' : dp01p_Lvl04_tempAir['vari'],
+                  'Lvl05_tempAir_mu' : dp01p_Lvl05_tempAir['mean'],
+                  'Lvl05_tempAir_vr' : dp01p_Lvl05_tempAir['vari'],
+                  'EC_co2FlxStor' : dp04p_EC_co2FlxStor['flux'],
+                  'EC_co2FlxTurb' : dp04p_EC_co2FlxTurb['fluxRaw'],
+                  'EC_co2FlxNSAE' : dp04p_EC_co2FlxNSAE
+                 }
+
+df_ORNL = pd.DataFrame(pert_data_dict)
 
 # %%
