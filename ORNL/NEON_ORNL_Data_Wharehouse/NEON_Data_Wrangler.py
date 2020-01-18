@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 # Gather file directory that points to data
 data_dir  = r'C:/Users/moyoa/Google Drive/CompSci/PhD Dissertation/Data Analysis/Picarro/Cumberland/Vandy_NOAA_OakRidge/NEON'
 data_fldr = r'/ORNL_data/ORNL-unzipped-data'
-data_file = r'NEON.D07.ORNL.DP4.00200.001.nsae.2019-10-24.expanded.h5'
+data_file = r'/NEON.D07.ORNL.DP4.00200.001.nsae.2019-10-25.expanded.h5'
 
 # Path for HD5F file
 raw_file = os.path.join(data_dir + data_fldr + data_file)
@@ -51,9 +51,10 @@ data.keys()
 ### Level 0 prime data products
 dp0p            = data['dp0p']['data']
 dp0p.keys()
-###### Gather the CO2 CRDS data
-#dp0p_crdCo2 = dp0p['crdCo2']
-####### ^^^ No data for this entry
+
+# The keys at the zeroth data product level illustrate where you may find the data. For instance, if you search
+# keys for 'irgaTurb' will show '000_060' indicating that the turbulence measurement from the IRGA is located
+# the sixth level of the EC tower (the top)
 
 #%% Data Product 01  -- dp01
 
@@ -296,4 +297,4 @@ df_ORNL.head()
 
 #%% Export DataFrame to csv
 
-df_ORNL.to_csv(r'clean_dataframes/df_ORNL.csv')
+df_ORNL.to_csv(r'clean_dataframes/df_ORNL_25Oct2019.csv')
