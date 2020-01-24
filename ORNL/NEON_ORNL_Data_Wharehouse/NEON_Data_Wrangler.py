@@ -15,10 +15,12 @@ import numpy  as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from datetime import datetime
+
 # Gather file directory that points to data
 data_dir  = r'C:/Users/moyoa/Google Drive/CompSci/PhD Dissertation/Data Analysis/Picarro/Cumberland/Vandy_NOAA_OakRidge/NEON'
 data_fldr = r'/ORNL_data/ORNL-unzipped-data'
-data_file = r'/NEON.D07.ORNL.DP4.00200.001.nsae.2019-10-25.expanded.h5'
+data_file = r'/NEON.D07.ORNL.DP4.00200.001.nsae.2019-10-24.expanded.h5'
 
 # Path for HD5F file
 raw_file = os.path.join(data_dir + data_fldr + data_file)
@@ -293,8 +295,29 @@ pert_data_dict = {
                  }
 
 df_ORNL = pd.DataFrame(pert_data_dict)
+
+# Clean date and time
+# Time Begin
+df_ORNL['timeBgn'] = df_ORNL['timeBgn'].astype(str).str.replace('b', '')
+df_ORNL['timeBgn'] = df_ORNL['timeBgn'].astype(str).str.replace("'", '')
+# Time End
+df_ORNL['timeEnd'] = df_ORNL['timeEnd'].astype(str).str.replace('b', '')
+df_ORNL['timeEnd'] = df_ORNL['timeEnd'].astype(str).str.replace("'", '')
+# Date Format
+date_format = "%Y-%m-%dT%H:%M:%S.%fZ"
+# Convert to datetime
+df_ORNL['timeBgn'] = pd.to_datetime(
+                     df_ORNL['timeBgn'], format=date_format, 
+                     errors='coerce')
+df_ORNL['timeEnd'] = pd.to_datetime(
+                     df_ORNL['timeEnd'], format=date_format, 
+                     errors='coerce')
 df_ORNL.head()
 
 #%% Export DataFrame to csv
 
-df_ORNL.to_csv(r'clean_dataframes/df_ORNL_25Oct2019.csv')
+df_ORNL.to_csv(r'clean_dataframes/df_ORNL_24Oct2019.csv')
+
+# Visualize EC Data
+df_ORNL.plot(x='timeEnd', y='EC_co2FlxNSAE', 
+             grid=True, kind='line')
