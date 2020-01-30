@@ -1,0 +1,93 @@
+table,fieldName,description,dataType,units,downloadPkg
+SCO2C_1_minute,startDateTime,"Date and time at which a sampling is initiated",dateTime,NA,basic
+SCO2C_1_minute,endDateTime,"Date and time at which a sampling is completed",dateTime,NA,basic
+SCO2C_1_minute,soilCO2concentrationMean,"Arithmetic mean of Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
+SCO2C_1_minute,soilCO2concentrationMinimum,"Minimum Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
+SCO2C_1_minute,soilCO2concentrationMaximum,"Maximum Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
+SCO2C_1_minute,soilCO2concentrationVariance,"Variance in Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillionSquared,basic
+SCO2C_1_minute,soilCO2concentrationNumPts,"Number of points used to calculate the arithmetic mean of Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,number,basic
+SCO2C_1_minute,soilCO2concentrationExpUncert,"Expanded uncertainty for Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
+SCO2C_1_minute,soilCO2concentrationStdErMean,"Standard error of the mean for Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
+SCO2C_1_minute,rangeFailQM,"Quality metric that summarizes the failed outcomes of the range test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,rangePassQM,"Quality metric that summarizes the passed outcomes of the range test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,rangeNAQM,"Quality metric that summarizes when the range test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,persistenceFailQM,"Quality metric that summarizes  the failed outcomes of the persistence test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,persistencePassQM,"Quality metric that summarizes the passed outcomes of the persistence test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,persistenceNAQM,"Quality metric that summarizes when the persistence test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,stepFailQM,"Quality metric that summarizes the failed outcomes of the step test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,stepPassQM,"Quality metric that summarizes the passed outcomes of the step test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,stepNAQM,"Quality metric that summarizes when the step test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,nullFailQM,"Quality metric that summarizes the failed outcomes of the null test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,nullPassQM,"Quality metric that summarizes the passed outcomes of the null test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,nullNAQM,"Quality metric that summarizes when the null test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,gapFailQM,"Quality metric that summarizes the failed outcomes of the gap test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,gapPassQM,"Quality metric that summarizes the passed outcomes of the gap test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,gapNAQM,"Quality metric that summarizes when the gap test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,spikeFailQM,"Quality metric that summarizes the failed outcomes of the spike test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,spikePassQM,"Quality metric that summarizes the passed outcomes of the spike test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,spikeNAQM,"Quality metric that summarizes when the spike test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,warmUpInstallationFailQM,"Quality metric that summarizes the failed outcomes of the warm-up and installation test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,warmUpInstallationPassQM,"Quality metric that summarizes the passed outcomes of the warm-up and installation test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,warmUpInstallationNAQM,"Quality metric that summarizes when the warm-up and installation test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,sensorErrorStatusFailQM,"Quality metric that summarizes the failed outcomes of the sensor error status test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,sensorErrorStatusPassQM,"Quality metric that summarizes the passed outcomes of the sensor error status test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,sensorErrorStatusNAQM,"Quality metric that summarizes when the sensor error status test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,temperatureSCO2FailQM,"Quality metric that summarizes the failed outcomes of the SCO2 temperature test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,temperatureSCO2PassQM,"Quality metric that summarizes the passed outcomes of the SCO2 temperature test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,temperatureSCO2NAQM,"Quality metric that summarizes when the SCO2 temperature test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,pressureRangeFailQM,"Quality metric that summarizes the failed outcomes of the pressure range test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,pressureRangePassQM,"Quality metric that summarizes the passed outcomes of the pressure range test over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,pressureRangeNAQM,"Quality metric that summarizes when the pressure range test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,validCalFailQM,"Quality metric that summarizes the failed outcomes of the valid calibration check over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,validCalPassQM,"Quality metric that summarizes the passed outcomes of the valid calibration check over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,validCalNAQM,"Quality metric that summarizes when the valid calibration check could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_1_minute,alphaQM,"Quality metric detailing the outcomes of the alpha quality flag over the averaging period, as a percent and detailed in NEON.DOC.001113",real,percent,expanded
+SCO2C_1_minute,betaQM,"Quality metric detailing the outcomes of the beta quality flag over the averaging period, as a percent and detailed in NEON.DOC.001113",real,percent,expanded
+SCO2C_1_minute,finalQF,"Quality flag indicating whether a data product has passed or failed an overall assessment of its quality, detailed in NEON.DOC.001113 (1=fail, 0=pass)",unsigned integer,NA,basic
+SCO2C_1_minute,finalQFSciRvw,"Quality flag indicating whether a data product has failed a science review of its quality, detailed in NEON.DOC.001113 (1=fail, 0=pass/not-reviewed)",unsigned integer,NA,expanded
+SCO2C_30_minute,startDateTime,"Date and time at which a sampling is initiated",dateTime,NA,basic
+SCO2C_30_minute,endDateTime,"Date and time at which a sampling is completed",dateTime,NA,basic
+SCO2C_30_minute,soilCO2concentrationMean,"Arithmetic mean of Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
+SCO2C_30_minute,soilCO2concentrationMinimum,"Minimum Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
+SCO2C_30_minute,soilCO2concentrationMaximum,"Maximum Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
+SCO2C_30_minute,soilCO2concentrationVariance,"Variance in Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillionSquared,basic
+SCO2C_30_minute,soilCO2concentrationNumPts,"Number of points used to calculate the arithmetic mean of Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,number,basic
+SCO2C_30_minute,soilCO2concentrationExpUncert,"Expanded uncertainty for Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
+SCO2C_30_minute,soilCO2concentrationStdErMean,"Standard error of the mean for Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
+SCO2C_30_minute,rangeFailQM,"Quality metric that summarizes the failed outcomes of the range test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,rangePassQM,"Quality metric that summarizes the passed outcomes of the range test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,rangeNAQM,"Quality metric that summarizes when the range test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,persistenceFailQM,"Quality metric that summarizes  the failed outcomes of the persistence test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,persistencePassQM,"Quality metric that summarizes the passed outcomes of the persistence test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,persistenceNAQM,"Quality metric that summarizes when the persistence test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,stepFailQM,"Quality metric that summarizes the failed outcomes of the step test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,stepPassQM,"Quality metric that summarizes the passed outcomes of the step test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,stepNAQM,"Quality metric that summarizes when the step test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,nullFailQM,"Quality metric that summarizes the failed outcomes of the null test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,nullPassQM,"Quality metric that summarizes the passed outcomes of the null test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,nullNAQM,"Quality metric that summarizes when the null test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,gapFailQM,"Quality metric that summarizes the failed outcomes of the gap test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,gapPassQM,"Quality metric that summarizes the passed outcomes of the gap test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,gapNAQM,"Quality metric that summarizes when the gap test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,spikeFailQM,"Quality metric that summarizes the failed outcomes of the spike test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,spikePassQM,"Quality metric that summarizes the passed outcomes of the spike test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,spikeNAQM,"Quality metric that summarizes when the spike test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,warmUpInstallationFailQM,"Quality metric that summarizes the failed outcomes of the warm-up and installation test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,warmUpInstallationPassQM,"Quality metric that summarizes the passed outcomes of the warm-up and installation test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,warmUpInstallationNAQM,"Quality metric that summarizes when the warm-up and installation test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,sensorErrorStatusFailQM,"Quality metric that summarizes the failed outcomes of the sensor error status test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,sensorErrorStatusPassQM,"Quality metric that summarizes the passed outcomes of the sensor error status test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,sensorErrorStatusNAQM,"Quality metric that summarizes when the sensor error status test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,temperatureSCO2FailQM,"Quality metric that summarizes the failed outcomes of the SCO2 temperature test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,temperatureSCO2PassQM,"Quality metric that summarizes the passed outcomes of the SCO2 temperature test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,temperatureSCO2NAQM,"Quality metric that summarizes when the SCO2 temperature test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,pressureRangeFailQM,"Quality metric that summarizes the failed outcomes of the pressure range test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,pressureRangePassQM,"Quality metric that summarizes the passed outcomes of the pressure range test over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,pressureRangeNAQM,"Quality metric that summarizes when the pressure range test could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,validCalFailQM,"Quality metric that summarizes the failed outcomes of the valid calibration check over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,validCalPassQM,"Quality metric that summarizes the passed outcomes of the valid calibration check over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,validCalNAQM,"Quality metric that summarizes when the valid calibration check could not be run over the averaging period, as a percent",real,percent,expanded
+SCO2C_30_minute,alphaQM,"Quality metric detailing the outcomes of the alpha quality flag over the averaging period, as a percent and detailed in NEON.DOC.001113",real,percent,expanded
+SCO2C_30_minute,betaQM,"Quality metric detailing the outcomes of the beta quality flag over the averaging period, as a percent and detailed in NEON.DOC.001113",real,percent,expanded
+SCO2C_30_minute,finalQF,"Quality flag indicating whether a data product has passed or failed an overall assessment of its quality, detailed in NEON.DOC.001113 (1=fail, 0=pass)",unsigned integer,NA,basic
+SCO2C_30_minute,finalQFSciRvw,"Quality flag indicating whether a data product has failed a science review of its quality, detailed in NEON.DOC.001113 (1=fail, 0=pass/not-reviewed)",unsigned integer,NA,expanded
