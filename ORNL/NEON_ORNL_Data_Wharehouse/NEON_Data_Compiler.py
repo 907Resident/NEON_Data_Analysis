@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 # Establish the path for folder containing the clean csv files
 folderpath = "C:/Users/moyoa/Documents/GitHub/NEON_Data_Analysis/ORNL/NEON_ORNL_Data_Wharehouse/clean_dataframes/"
 
-# Compile Clean Data Frames
+# Compile Clean Data Frames from CSV Files
 df_ORNL = pd.concat(map(pd.read_csv, glob.glob(os.path.join(
                     folderpath, "df_ORNL_*.csv"))))
 

@@ -1,6 +1,6 @@
 table,fieldName,description,dataType,units,downloadPkg
-SCO2C_1_minute,startDateTime,"Date and time at which a sampling is initiated",dateTime,NA,basic
-SCO2C_1_minute,endDateTime,"Date and time at which a sampling is completed",dateTime,NA,basic
+SCO2C_1_minute,startDateTime,Date and time at which a sampling is initiated,dateTime,NA,basic
+SCO2C_1_minute,endDateTime,Date and time at which a sampling is completed,dateTime,NA,basic
 SCO2C_1_minute,soilCO2concentrationMean,"Arithmetic mean of Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
 SCO2C_1_minute,soilCO2concentrationMinimum,"Minimum Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
 SCO2C_1_minute,soilCO2concentrationMaximum,"Maximum Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
@@ -45,8 +45,8 @@ SCO2C_1_minute,alphaQM,"Quality metric detailing the outcomes of the alpha quali
 SCO2C_1_minute,betaQM,"Quality metric detailing the outcomes of the beta quality flag over the averaging period, as a percent and detailed in NEON.DOC.001113",real,percent,expanded
 SCO2C_1_minute,finalQF,"Quality flag indicating whether a data product has passed or failed an overall assessment of its quality, detailed in NEON.DOC.001113 (1=fail, 0=pass)",unsigned integer,NA,basic
 SCO2C_1_minute,finalQFSciRvw,"Quality flag indicating whether a data product has failed a science review of its quality, detailed in NEON.DOC.001113 (1=fail, 0=pass/not-reviewed)",unsigned integer,NA,expanded
-SCO2C_30_minute,startDateTime,"Date and time at which a sampling is initiated",dateTime,NA,basic
-SCO2C_30_minute,endDateTime,"Date and time at which a sampling is completed",dateTime,NA,basic
+SCO2C_30_minute,startDateTime,Date and time at which a sampling is initiated,dateTime,NA,basic
+SCO2C_30_minute,endDateTime,Date and time at which a sampling is completed,dateTime,NA,basic
 SCO2C_30_minute,soilCO2concentrationMean,"Arithmetic mean of Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
 SCO2C_30_minute,soilCO2concentrationMinimum,"Minimum Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
 SCO2C_30_minute,soilCO2concentrationMaximum,"Maximum Soil CO2 concentration adjusted for temperature, pressure, oxygen, and humidity conditions",real,partsPerMillion,basic
